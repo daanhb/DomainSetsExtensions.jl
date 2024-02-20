@@ -2,7 +2,11 @@
 using Intervals
 const IV = Intervals
 
+.. = DomainSets.IntervalSets.:..
+
 ivct = DomainSetsExtensions.IntervalsExtCType()
+
+@testset "Intervals.jl" begin
 
 @testset "interface" begin
     d = IV.Interval{Float64, Closed, Closed}(0,1)
@@ -73,4 +77,6 @@ end
 
     d1int = IV.Interval{Int, Closed, Closed}(0,1)
     @test productdomain(d1int,d2) isa DS.VcatDomain{2,Float64}
+end
+
 end

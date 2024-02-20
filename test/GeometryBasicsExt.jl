@@ -6,6 +6,8 @@ using DomainSets: SVector
 
 gbct = DomainSetsExtensions.GeometryBasicsExtCType()
 
+@testset "GeometryBasics.jl" begin
+
 @testset "interface" begin
     d = GB.Rect(0.0, 1.0, 1.0, 2.0)
     @test DomainStyle(d) == IsDomain()
@@ -21,4 +23,6 @@ end
     @test isequaldomain(d1c, d1)
     @test canonicaldomain(gbct, d1c) isa GB.Point2
     @test canonicaldomain(gbct, d1c) == d1
+end
+
 end

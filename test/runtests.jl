@@ -6,3 +6,4 @@ equal = DomainSets.Equal()
 
 include("IntervalsExt.jl")
 include("GeometryBasicsExt.jl")
+include("MeshesExt.jl")
