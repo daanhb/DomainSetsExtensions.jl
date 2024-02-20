@@ -4,12 +4,13 @@ const IV = Intervals
 
 .. = DomainSets.IntervalSets.:..
 
-ivct = DomainSetsExtensions.IntervalsExtCType()
+ivct = canonicalextensiontype(IV.AbstractInterval)
 
 @testset "Intervals.jl" begin
 
 @testset "interface" begin
     d = IV.Interval{Float64, Closed, Closed}(0,1)
+    @test canonicalextensiontype(d) == ivct
     @test DomainStyle(d) == IsDomain()
     @test domaineltype(d) == Float64
 

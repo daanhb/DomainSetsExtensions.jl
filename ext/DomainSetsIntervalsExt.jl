@@ -1,15 +1,10 @@
 module DomainSetsIntervalsExt
 
 using DomainSetsExtensions
-using DomainSetsExtensions: IntervalsExtCType
+using DomainSetsExtensions: equaldomain
 
 using DomainSetsExtensions: DomainSets
 const DS = DomainSets
-
-using DomainSets:
-    TypedEndpointsInterval,
-    leftendpoint,
-    rightendpoint
 
 import DomainSets:
     todomainset,
@@ -19,10 +14,20 @@ import DomainSets:
     canonicaldomain,
     mapfrom_canonical
 
+using DomainSets:
+    TypedEndpointsInterval,
+    leftendpoint,
+    rightendpoint
+
 using Intervals
 const IV = Intervals
 
-equaldomain(d) = canonicaldomain(DS.Equal(), d)
+"Canonical type associated with Intervals.jl"
+struct IntervalsExtCType <: DomainSetsExtensions.CanonicalExtensionType
+end
+
+DomainSetsExtensions.canonicalextensiontype(::Type{<:IV.AbstractInterval}) = IntervalsExtCType()
+DomainSetsExtensions.canonicalextensiontype(::Type{<:IV.IntervalSet}) = IntervalsExtCType()
 
 ## The Intervals.Interval type
 

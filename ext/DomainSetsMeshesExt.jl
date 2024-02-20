@@ -2,18 +2,11 @@ module DomainSetsMeshesExt
 
 using DomainSetsExtensions
 using DomainSetsExtensions:
-    MeshesExtCType,
+    equaldomain,
     MakiePlotting
 
 using DomainSetsExtensions: DomainSets
 const DS = DomainSets
-
-using DomainSets:
-    SVector,
-    HyperRectangle,
-    components,
-    leftendpoint,
-    rightendpoint
 
 import DomainSets:
     todomainset,
@@ -23,10 +16,21 @@ import DomainSets:
     canonicaldomain,
     mapfrom_canonical
 
+using DomainSets:
+    SVector,
+    HyperRectangle,
+    components,
+    leftendpoint,
+    rightendpoint
+
 using Meshes
 
-equaldomain(d) = canonicaldomain(DS.Equal(), d)
 
+"Canonical type associated with Meshes.jl"
+struct MeshesExtCType <: DomainSetsExtensions.CanonicalExtensionType
+end
+
+DomainSetsExtensions.canonicalextensiontype(::Type{<:Meshes.Geometry}) = MeshesExtCType()
 
 DomainStyle(d::Meshes.Geometry) = DS.IsDomain()
 domaineltype(d::Meshes.Geometry{Dim,T}) where {Dim,T} = SVector{Dim,T}

@@ -1,13 +1,10 @@
 module DomainSetsGeometryBasicsExt
 
 using DomainSetsExtensions
-using DomainSetsExtensions: GeometryBasicsExtCType
+using DomainSetsExtensions: equaldomain
 
 using DomainSetsExtensions: DomainSets
 const DS = DomainSets
-
-using DomainSets:
-    SVector
 
 import DomainSets:
     todomainset,
@@ -17,14 +14,21 @@ import DomainSets:
     canonicaldomain,
     mapfrom_canonical
 
+using DomainSets:
+    SVector
+
 using GeometryBasics
 const GB = GeometryBasics
 
-equaldomain(d) = canonicaldomain(DS.Equal(), d)
+"Canonical type associated with GeometryBasics.jl"
+struct GeometryBasicsExtCType <: DomainSetsExtensions.CanonicalExtensionType
+end
+
+DomainSetsExtensions.canonicalextensiontype(::Type{<:GB.AbstractGeometry}) =
+    GeometryBasicsExtCType()
 
 DomainStyle(d::GB.AbstractGeometry) = DS.IsDomain()
 domaineltype(d::GB.AbstractGeometry{DIM,T}) where {DIM,T} = SVector{DIM,T}
-
 
 ## The Point type
 

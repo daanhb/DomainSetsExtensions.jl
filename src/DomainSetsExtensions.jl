@@ -1,25 +1,19 @@
 module DomainSetsExtensions
 
+export canonicalextensiontype
+
 using DomainSets
 using DomainSets: CanonicalType
 
+# Until this function is in DomainSets
+equaldomain(d) = canonicaldomain(DomainSets.Equal(), d)
 
-# Canonical types used to translate between packages
-
+"Canonical types used to translate between packages."
 abstract type CanonicalExtensionType <: CanonicalType
 end
 
-"Canonical type associated with GeometryBasics.jl"
-struct GeometryBasicsExtCType <: CanonicalExtensionType
-end
-
-"Canonical type associated with Intervals.jl"
-struct IntervalsExtCType <: CanonicalExtensionType
-end
-
-"Canonical type associated with Meshes.jl"
-struct MeshesExtCType <: CanonicalExtensionType
-end
+"Return the extension type associated with the given domain."
+canonicalextensiontype(d) = canonicalextensiontype(typeof(d))
 
 
 # Canonical types used to express certain functionality

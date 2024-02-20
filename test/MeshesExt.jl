@@ -1,7 +1,7 @@
 
 using Meshes
 
-mshct = DomainSetsExtensions.MeshesExtCType()
+mshct = canonicalextensiontype(Meshes.Geometry)
 
 @testset "Meshes.jl" begin
 

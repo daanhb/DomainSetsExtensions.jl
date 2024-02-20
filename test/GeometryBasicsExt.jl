@@ -4,7 +4,7 @@ const GB = GeometryBasics
 
 using DomainSets: SVector
 
-gbct = DomainSetsExtensions.GeometryBasicsExtCType()
+gbct = canonicalextensiontype(GB.AbstractGeometry)
 
 @testset "GeometryBasics.jl" begin
 
