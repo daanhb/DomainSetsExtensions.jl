@@ -40,9 +40,10 @@ domaineltype(d::Meshes.Geometry{Dim,T}) where {Dim,T} = SVector{Dim,T}
 
 todomainset(d::Meshes.Box) =
     DS.Rectangle(Tuple(coordinates(minimum(d))), Tuple(coordinates(maximum(d))))
-fromdomainset(d::DS.HyperRectangle{SVector{N,T}}) where {N,T} =
-    Meshes.Box(Tuple(map(leftendpoint, components(d))),
-        Tuple(map(rightendpoint, components(d))))
+function fromdomainset(d::DS.HyperRectangle{SVector{N,T}}) where {N,T}
+    a,b = leftendpoint(d), rightendpoint(d)
+    Meshes.Box(Tuple(a),Tuple(b))
+end
 
 canonicaldomain(::DS.Equal, d::Meshes.Box) = todomainset(d)
 

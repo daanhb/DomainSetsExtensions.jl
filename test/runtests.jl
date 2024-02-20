@@ -2,8 +2,10 @@ using DomainSets, DomainSetsExtensions
 using Test
 
 const DS = DomainSets
-equal = DomainSets.Equal()
+
+using DomainSetsExtensions: equaldomain
 
 include("IntervalsExt.jl")
 include("GeometryBasicsExt.jl")
 include("MeshesExt.jl")
+include("mixed.jl")

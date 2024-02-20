@@ -23,7 +23,7 @@ end
 @testset "canonical intervals" begin
     d1 = IV.Interval{Float64, Closed, Closed}(0,1)
     d1c = DS.IntervalSets.Interval{:closed,:closed}(0.0,1.0)
-    @test canonicaldomain(equal, d1) isa DS.IntervalSets.AbstractInterval{Float64}
+    @test equaldomain(d1) isa DS.IntervalSets.AbstractInterval{Float64}
     @test canonicaldomain(d1) == canonicaldomain(d1c)
     @test isequaldomain(d1, d1c)
     @test isequaldomain(d1c, d1)
@@ -32,7 +32,7 @@ end
 
     d2 = IV.Interval{Float64, Closed, Open}(0,1)
     d2c = DS.IntervalSets.Interval{:closed,:open}(0.0,1.0)
-    @test canonicaldomain(equal, d2) isa DS.IntervalSets.AbstractInterval{Float64}
+    @test equaldomain(d2) isa DS.IntervalSets.AbstractInterval{Float64}
     @test canonicaldomain(d2) == canonicaldomain(d2c)
     @test isequaldomain(d2, d2c)
     @test isequaldomain(d2c, d2)
@@ -41,7 +41,7 @@ end
 
     d3 = IV.Interval{Float64, Open, Closed}(0,1)
     d3c = DS.IntervalSets.Interval{:open,:closed}(0.0,1.0)
-    @test canonicaldomain(equal, d3) isa DS.IntervalSets.AbstractInterval{Float64}
+    @test equaldomain(d3) isa DS.IntervalSets.AbstractInterval{Float64}
     @test canonicaldomain(d3) == canonicaldomain(d3c)
     @test isequaldomain(d3, d3c)
     @test isequaldomain(d3c, d3)
@@ -50,7 +50,7 @@ end
 
     d4 = IV.Interval{Float64, Open, Open}(0,1)
     d4c = DS.IntervalSets.Interval{:open,:open}(0.0,1.0)
-    @test canonicaldomain(equal, d4) isa DS.IntervalSets.AbstractInterval{Float64}
+    @test equaldomain(d4) isa DS.IntervalSets.AbstractInterval{Float64}
     @test canonicaldomain(d4) == canonicaldomain(d4c)
     @test isequaldomain(d4, d4c)
     @test isequaldomain(d4c, d4)

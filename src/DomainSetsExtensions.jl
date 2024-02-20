@@ -5,8 +5,9 @@ export canonicalextensiontype
 using DomainSets
 using DomainSets: CanonicalType
 
-# Until this function is in DomainSets
+# Until these functions are in DomainSets
 equaldomain(d) = canonicaldomain(DomainSets.Equal(), d)
+
 
 "Canonical types used to translate between packages."
 abstract type CanonicalExtensionType <: CanonicalType
