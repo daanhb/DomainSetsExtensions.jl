@@ -1,7 +1,6 @@
 module DomainSetsIntervalsExt
 
 using DomainSetsExtensions
-using DomainSetsExtensions: equaldomain
 
 using DomainSetsExtensions: DomainSets
 const DS = DomainSets
@@ -15,6 +14,7 @@ import DomainSets:
     mapfrom_canonical
 
 using DomainSets:
+    equaldomain,
     TypedEndpointsInterval,
     leftendpoint,
     rightendpoint
@@ -23,11 +23,11 @@ using Intervals
 const IV = Intervals
 
 "Canonical type associated with Intervals.jl"
-struct IntervalsExtCType <: DomainSetsExtensions.CanonicalExtensionType
+struct IntervalsExtCType <: DomainSets.CanonicalExtensionType
 end
 
-DomainSetsExtensions.canonicalextensiontype(::Type{<:IV.AbstractInterval}) = IntervalsExtCType()
-DomainSetsExtensions.canonicalextensiontype(::Type{<:IV.IntervalSet}) = IntervalsExtCType()
+DomainSets.canonicalextensiontype(::Type{<:IV.AbstractInterval}) = IntervalsExtCType()
+DomainSets.canonicalextensiontype(::Type{<:IV.IntervalSet}) = IntervalsExtCType()
 
 ## The Intervals.Interval type
 

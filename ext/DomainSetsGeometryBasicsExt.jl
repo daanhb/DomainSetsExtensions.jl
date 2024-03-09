@@ -1,8 +1,6 @@
 module DomainSetsGeometryBasicsExt
 
 using DomainSetsExtensions
-using DomainSetsExtensions:
-    equaldomain
 
 using DomainSetsExtensions: DomainSets
 const DS = DomainSets
@@ -16,6 +14,7 @@ import DomainSets:
     mapfrom_canonical
 
 using DomainSets:
+    equaldomain,
     SVector,
     leftendpoint,
     rightendpoint
@@ -24,10 +23,10 @@ using GeometryBasics
 const GB = GeometryBasics
 
 "Canonical type associated with GeometryBasics.jl"
-struct GeometryBasicsExtCType <: DomainSetsExtensions.CanonicalExtensionType
+struct GeometryBasicsExtCType <: DomainSets.CanonicalExtensionType
 end
 
-DomainSetsExtensions.canonicalextensiontype(::Type{<:GB.AbstractGeometry}) =
+DomainSets.canonicalextensiontype(::Type{<:GB.AbstractGeometry}) =
     GeometryBasicsExtCType()
 
 DomainStyle(d::GB.AbstractGeometry) = DS.IsDomain()

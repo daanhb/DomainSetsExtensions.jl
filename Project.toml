@@ -7,6 +7,7 @@ version = "0.0.1"
 DomainSets = "5b8099bc-c8ec-5219-889f-1d9e522a28bf"
 
 [weakdeps]
+CoordinateTransformations = "150eb455-5306-5404-9cee-2592286d6298"
 GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
 Intervals = "d8418881-c3e1-53bb-8760-2df7ec849ed5"
 Meshes = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
@@ -15,6 +16,7 @@ Meshes = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
 DomainSetsGeometryBasicsExt = "GeometryBasics"
 DomainSetsIntervalsExt = "Intervals"
 DomainSetsMeshesExt = "Meshes"
+FunctionMapsCoordinateTransformationsExt = "CoordinateTransformations"
 
 [compat]
 julia = "1.9"
@@ -27,4 +29,4 @@ Meshes = "0.40"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "GeometryBasics", "Intervals", "Meshes"]
+test = ["Test", "GeometryBasics", "Intervals", "Meshes", "CoordinateTransformations"]

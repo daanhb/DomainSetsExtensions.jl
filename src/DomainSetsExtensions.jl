@@ -3,24 +3,12 @@ module DomainSetsExtensions
 export canonicalextensiontype
 
 using DomainSets
-using DomainSets: CanonicalType
-
-# Until these functions are in DomainSets
-equaldomain(d) = canonicaldomain(DomainSets.Equal(), d)
-
-
-"Canonical types used to translate between packages."
-abstract type CanonicalExtensionType <: CanonicalType
-end
-
-"Return the extension type associated with the given domain."
-canonicalextensiontype(d) = canonicalextensiontype(typeof(d))
-
+using DomainSets: canonicalextensiontype
 
 # Canonical types used to express certain functionality
 
 "Supertype of canonical types that have to do with specific functionality."
-abstract type CanonicalCapabilityType <: CanonicalType
+abstract type CanonicalCapabilityType <: DomainSets.CanonicalType
 end
 
 "Canonical domains which are plottable."
@@ -33,5 +21,7 @@ end
 "Plotting capability with the Plots package."
 struct PlotsPlotting <: Plotting
 end
+
+include("FunctionMapsExtensions.jl")
 
 end
